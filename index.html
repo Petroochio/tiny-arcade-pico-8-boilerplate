@@ -4,6 +4,27 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<script type="text/javascript" src='./p8-src/p8.js'></script>
 	<link rel="stylesheet" href="./p8-src/p8.css">
+
+  <style>
+    #example-canvas {
+      height: 10vh;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+    }
+
+    #example-canvas.big-canvas {
+      height: 50vh;
+
+    }
+
+    #tinycade-div {
+      position: absolute;
+      left: -50vw;
+
+    }
+  </style>
 </head>
 
 <body style="padding:0px; margin:0px; background-color:#222; color:#ccc">
@@ -74,11 +95,12 @@
 </div> <!-- p8_frame -->
 </div> <!-- p8_frame_0 size limit -->
 
-<div id="tinycade-div"></div>
 <script type="text/javascript" src='./p8-src/p8-post.js'></script>
 <script src="https://unpkg.com/beholder-detection@1.3.2/dist/beholder-detection.js"></script>
 <script type="text/javascript" src='./tinycade-control.js'></script>
 
 </div> <!-- body_0 -->
+<div id="tinycade-div"></div>
+<canvas id="example-canvas"></canvas>
 </body></html>
 
