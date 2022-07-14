@@ -5,7 +5,7 @@ let leftM, rightM, shootM, overlayCanvas, overlayCtx;
 
 let beholderConfig = {
   camera_params: {
-    videoSize: 0, // The video size values map to the following [320 x 240, 640 x 480, 1280 x 720, 1920 x 1080]
+    videoSize: 1, // The video size values map to the following [320 x 240, 640 x 480, 1280 x 720, 1920 x 1080]
     rearCamera: true, // Boolean value for defaulting to the rear facing camera. Only works on mobile
     torch: false, // Boolean value for if torch/flashlight is on. Only works for rear facing mobile cameras. Can only be set from init
   },
@@ -15,7 +15,7 @@ let beholderConfig = {
     maxMarkerPerimeter: 1,
     sizeAfterPerspectiveRemoval: 49,
     area: {
-      start: { x: 0.30, y: 0.14 },
+      start: { x: 0.25, y: 0.14 },
       end:   { x: 1, y: 0.55 },
     },
   },
@@ -115,7 +115,7 @@ function bUpdate() {
   
   // If marker 0 is present, lerp it's position from a pre-determined range to fit within 0-128 for pico 8
   if (sliderMarker.center.x !== NaN && sliderMarker.center.x !== 0 && pico8_gpio) {
-    let newTarget = (sliderMarker.center.x - refLeft.center.x - 45) / 70 * 128;
+    let newTarget = (sliderMarker.center.x - refLeft.center.x - 190) / 140 * 128;
     // let newTarget = (sliderMarker.center.x - refLeft.center.x -100) / (refRight.center.x - refLeft.center.x - 100) * 128
     currx = currx + (newTarget - currx) * 0.4;
 
@@ -136,7 +136,7 @@ function bUpdate() {
   // pico8_gpio[1] = sliderMarker.center.x > 120 ? 1 : 0;
 
   // pico8_gpio[2] = shootM.present ? 0 : 1; // Old
-  pico8_gpio[2] = shootM.present ? 1 : 0;
+  pico8_gpio[2] = !shootM.present ? 1 : 0;
 }
 
 window.onload = () => {
